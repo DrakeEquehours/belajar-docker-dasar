@@ -59,7 +59,7 @@ def sentiment_analysis():
     sentence = request.json["sentence"]
     return make_response(
         jsonify(
-            sentiment_pipeline(sentence)[0]
+            sentiment_pipeline(sentence)[0] #reponse -> {'label': 'POSITIVE', 'score': 0.9998}
         ), 200
     )
 

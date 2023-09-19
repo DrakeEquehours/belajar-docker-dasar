@@ -1,13 +1,13 @@
 # Instalasi Docker Windows
 #### By Ahmad Zein Al Wafi
 ## Konfigurasi WSL
-### Introduction
-The Windows Subsystem for Linux lets developers run a GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dualboot setup.
-### How to
-#### Update WSL 2
+### Perkenalan
+ Windows Subsistem untuk Linux (WSL) memungkinkan pengembang menjalankan lingkungan GNU/Linux -- termasuk sebagian besar alat, utilitas, dan aplikasi baris perintah -- langsung di Windows, tanpa modifikasi, tanpa overhead mesin virtual tradisional atau pengaturan dualboot.
+### Langkah - Langkah
+#### Memperbarui WSL 
 - Unduh berkas exe dari [link berikut](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
 - Install berkas yang tadi telah diunduh
-#### Konfigurasi
+#### Konfigurasi WSL dan Windows
 - Jalankan PowerShell as Administrator
 - Salin instruksi di bawah ini ke PowerShell
 - > dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart

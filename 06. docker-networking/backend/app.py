@@ -24,8 +24,7 @@ def welcome():
 @app.route('/text-cleaning/remove-number', methods=['GET', 'POST'])
 def remove_numbers():
     db.insert({'url': '/text-cleaning/remove-number', 'time': strftime("%Y-%m-%d %H:%M:%S", gmtime())})
-    sentence = request.args.get("sentence").split("_")
-    sentence = " ".join(sentence)
+    sentence = request.json["sentence"]
     return make_response(
         jsonify(
             {"sentence" : ''.join([i for i in sentence if not i.isdigit()])}
@@ -35,8 +34,7 @@ def remove_numbers():
 @app.route('/text-cleaning/lower-case', methods=['GET', 'POST'])
 def lower_case():
     db.insert({'url': '/text-cleaning/lower-case', 'time': strftime("%Y-%m-%d %H:%M:%S", gmtime())})
-    sentence = request.args.get("sentence").split("_")
-    sentence = " ".join(sentence)
+    sentence = request.json["sentence"]
     return make_response(
         jsonify(
             {"sentence" : str(sentence.lower())}
@@ -46,8 +44,7 @@ def lower_case():
 @app.route('/text-cleaning/stemming', methods=['GET', 'POST'])
 def stemming():
     db.insert({'url': '/text-cleaning/stemming', 'time': strftime("%Y-%m-%d %H:%M:%S", gmtime())})
-    sentence = request.args.get("sentence").split("_")
-    sentence = " ".join(sentence)
+    sentence = request.json["sentence"]
     stemmer = nltk.porter.PorterStemmer()
     return make_response(
         jsonify(
@@ -59,10 +56,10 @@ def stemming():
 def sentiment_analysis():
     db.insert({'url': '/prediction/sentiment-analysis', 'time': strftime("%Y-%m-%d %H:%M:%S", gmtime())})
     sentiment_pipeline = pipeline("sentiment-analysis")
-    sentence = request.args.get("sentence").split("_")
+    sentence = request.json["sentence"]
     return make_response(
         jsonify(
-            sentiment_pipeline(" ".join(sentence))[0]
+            sentiment_pipeline(sentence)[0]
         ), 200
     )
 

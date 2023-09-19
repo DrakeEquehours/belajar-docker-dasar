@@ -7,7 +7,7 @@ Melihat daftar image di docker
 > docker image ls
 ### pull
 Mengambil image dari hosting registry
-> docker pull node:18
+> docker pull tensorflow/tensorflow
 ### push
 Mengunggah docker image ke docker registry
 > docker push docker.io/username/imagename
@@ -26,6 +26,8 @@ Melihat daftar container di docker
 ### run 
 Membuat dan menjalankan container dari image
 > docker run --name CONTAINERNAME IMAGE
+Run dapat memiliki banyak argumen, contohnya sebagai berikut
+> docker run -it -p 8888:8888 tensorflow/tensorflow:latest-jupyter 
 ### stop
 Menghentikan container dengan sopan
 > docker container stop CONTAINER

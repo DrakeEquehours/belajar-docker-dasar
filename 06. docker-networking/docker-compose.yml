@@ -1,0 +1,33 @@
+version: '3'
+ 
+services:
+  front-end:
+    container_name: front-end-nlp-app
+    image: 'equehours/nlp-front-end:v1'
+    restart: 'always'
+    environment:
+      - BACK_END_URL='http://host.docker.internal:3000/'
+    ports:
+      - 80:8080
+    depends_on:
+      - back-end
+    networks:
+      - nlp-app-network
+ 
+  back-end:
+    container_name: back-end-nlp-app
+    image: 'equehours/nlp-server:v2'
+    restart: 'always'
+    ports:
+      - 3000:5000
+    volumes:
+      - "nlp-app-db:/data/db"
+    networks:
+      - nlp-app-network
+ 
+volumes:
+  nlp-app-db:
+
+networks:
+  nlp-app-network:
+    driver: bridge

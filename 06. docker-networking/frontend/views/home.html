@@ -49,7 +49,7 @@
       let resultField = document.getElementById('result_field')
       let lowerCaseBtn = document.getElementById('lower_case')
       const sendRequests = (pth) =>{
-        pth ='http://host.docker.internal:5000/text-cleaning/'+pth
+        pth ='http://backend:3000/text-cleaning/'+pth
         axios.post(pth, {'sentence': inputField.value})
         
         .then((response) => {
